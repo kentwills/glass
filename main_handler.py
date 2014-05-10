@@ -152,7 +152,8 @@ class MainHandler(webapp2.RequestHandler):
     return 'Application is now subscribed to updates.'
 
   def _jon_notification(self):
-    location = self.mirror_service.locations().get().execute()
+    location = self.mirror_service.locations().get(id='latest').execute()
+    print location
     text = 'Jon says you are at %s by %s' % \
     (location.get('latitude'), location.get('longitude'))
     body = {
